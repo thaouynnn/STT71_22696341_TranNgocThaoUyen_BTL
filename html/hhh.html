@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng</title>
+    <style>
+        .badge {
+            display: inline-block;
+            padding: 0.5em 1em;
+            font-size: 1em;
+            color: #fff;
+            background-color: #dc3545;
+            /* Màu đỏ */
+            border-radius: 50px;
+            /* Viền bo tròn */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Giỏ Hàng</h1>
+    <p>Số sản phẩm trong giỏ hàng: <span id="cart-count" class="badge badge-pill badge-danger">0</span></p>
+
+    <!-- Nút để thêm sản phẩm vào giỏ hàng -->
+    <button onclick="addProduct()">Thêm sản phẩm vào giỏ hàng</button>
+
+    <script>
+        // Giả lập giỏ hàng với các sản phẩm mẫu
+        let cartItems = [];
+
+        // Hàm cập nhật số lượng sản phẩm trong giỏ hàng
+        function updateCartCount() {
+            const cartCount = document.getElementById('cart-count');
+            if (cartCount) {
+                cartCount.textContent = cartItems.length; // Cập nhật số lượng sản phẩm trong giỏ hàng
+            } else {
+                console.error("Element #cart-count not found");
+            }
+        }
+
+        // Hàm thêm sản phẩm vào giỏ hàng
+        function addProduct() {
+            // Giả sử thêm sản phẩm mới vào giỏ
+            const newItem = {
+                id: cartItems.length + 1,
+                name: `Item ${cartItems.length + 1}`
+            };
+            cartItems.push(newItem); // Thêm sản phẩm mới vào giỏ hàng
+            updateCartCount(); // Cập nhật lại số lượng sản phẩm trong giỏ hàng
+        }
+
+        // Cập nhật giỏ hàng khi trang tải xong
+        document.addEventListener("DOMContentLoaded", function() {
+            updateCartCount(); // Cập nhật số lượng giỏ hàng khi trang tải xong
+        });
+    </script>
+
+</body>
+
+</html>
